@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Parser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <h1 class="logo">Resume Analyser</h1>
+            <ul>
+                <li><a href="{{url_for('review')}}" >Review submissions</a></li>
+                <li><a href="{{url_for('result')}}" >View Result</a></li>
+            </ul>         
+        </div>
+        
+        <div class="content">            
+            <div>
+                <h3>Upload Resume (.pdf only)</h3><br>
+        <form method='POST' enctype='multipart/form-data'>
+            {{form.hidden_tag()}}
+            {{form.files()}}
+            {{form.submit()}}
+            <p>{{ uploadResult }}</p>
+        </form>
+    
+        <br>
+        <h2>Parse and Score Resume</h2>
+        <form method='POST' enctype='multipart/form-data'>
+            <input type="submit" name="p" value="Parse"/>
+            <p>{{ errorMessage }}</p>
+            <p>{{ scoreMessage }}</p>
+            <p>{{ matchesMessage }}</p>
+        </form>
+                                                
+            </div> 
+    
+        </div>
+                   
+          <div class="scroll-div">            
+              <div class="scroll-obj">
+                  <ul>
+                      {% for word in keywords %}
+                          <li><input type='hidden'>{{ word }}</li>
+                      {% endfor %}
+                  </ul>    
+              </div>
+          </div>
+
+        <div class="skills">
+            <h3>Enter Skills</h3>
+            <p>Enter individually or as a space-separated list.</p>
+           <form method="POST" enctype="multipart/form-data">
+               <input type="text" name="kw" />
+               <input type="submit" value="Submit"/>
+           </form>
+            <form method="POST"enctype="multipart/form-data">
+                <input type="submit" name="r" value="Reset"/>
+            </form>  
+            <h4>Expected Skills</h4>          
+
+        </div>               
+     
+        
+        
+    
+
+           
+
+    </div>
+    
+
+</body>
+<br><br><br>
+</html>

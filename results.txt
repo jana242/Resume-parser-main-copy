@@ -1,0 +1,5 @@
+0.0%		
+	FILEPATH: C:\Users\91790\Projects\Resume-Parser-main\static/files\Jana_Resume_doc.pdf		
+	KEYWORDS: ['abinitio', 'teradata', 'sql']		
+	MATCHES: []		
+
